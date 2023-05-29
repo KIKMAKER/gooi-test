@@ -8,6 +8,10 @@ Rails.application.configure do
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
 
+  # Define default url options (lewagon lecture: https://kitt.lewagon.com/camps/1244/lectures/05-Rails%2F06-Airbnb-Devise)
+  # In production, :host should be set to the actual host of your application.
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
   # Do not eager load code on boot.
   config.eager_load = false
 
