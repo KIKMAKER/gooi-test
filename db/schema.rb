@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_29_223143) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_06_193849) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -18,22 +18,43 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_29_223143) do
     t.datetime "time", precision: nil
     t.date "date"
     t.string "note"
-    t.integer "quantity"
-    t.float "buckets"
-    t.bigint "user_id", null: false
+    t.integer "bucket_quantity"
+    t.string "bucket_type"
+    t.bigint "order_id", null: false
+    t.bigint "subscription_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["order_id"], name: "index_collections_on_order_id"
+    t.index ["subscription_id"], name: "index_collections_on_subscription_id"
     t.index ["user_id"], name: "index_collections_on_user_id"
   end
 
   create_table "orders", force: :cascade do |t|
-    t.string "product"
     t.integer "quantity"
+    t.bigint "stock_item_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["stock_item_id"], name: "index_orders_on_stock_item_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
+  create_table "stock_items", force: :cascade do |t|
+    t.string "name"
+    t.integer "quantity"
+    t.integer "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "subscriptions", force: :cascade do |t|
+    t.integer "pick_ups"
     t.integer "status"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_orders_on_user_id"
+    t.index ["user_id"], name: "index_subscriptions_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -53,6 +74,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_29_223143) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "collections", "orders"
+  add_foreign_key "collections", "subscriptions"
   add_foreign_key "collections", "users"
+  add_foreign_key "orders", "stock_items"
   add_foreign_key "orders", "users"
+  add_foreign_key "subscriptions", "users"
 end

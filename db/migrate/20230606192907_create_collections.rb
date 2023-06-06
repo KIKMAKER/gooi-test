@@ -4,9 +4,10 @@ class CreateCollections < ActiveRecord::Migration[7.0]
       t.timestamp :time
       t.date :date
       t.string :note
-      t.integer :quantity
-      t.float :buckets
-      t.references :user, null: false, foreign_key: true
+      t.integer :bucket_quantity
+      t.string :bucket_type
+      t.references :order, null: false, foreign_key: true
+      t.references :subscription, null: false, foreign_key: true
 
       t.timestamps
     end
