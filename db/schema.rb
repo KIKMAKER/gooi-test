@@ -10,21 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_06_193849) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_06_202122) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "collections", force: :cascade do |t|
-    t.datetime "time", precision: nil
+  create_table "collection_records", force: :cascade do |t|
     t.date "date"
-    t.string "note"
+    t.datetime "time", precision: nil
+    t.text "note"
     t.integer "bucket_quantity"
     t.string "bucket_type"
-    t.bigint "order_id", null: false
-    t.bigint "subscription_id", null: false
+    t.bigint "collection_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
+    t.index ["collection_id"], name: "index_collection_records_on_collection_id"
+  end
+
+  create_table "collections", force: :cascade do |t|
+    t.bigint "order_id", null: false
+    t.bigint "subscription_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["order_id"], name: "index_collections_on_order_id"
     t.index ["subscription_id"], name: "index_collections_on_subscription_id"
     t.index ["user_id"], name: "index_collections_on_user_id"
@@ -74,6 +81,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_06_193849) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "collection_records", "collections"
   add_foreign_key "collections", "orders"
   add_foreign_key "collections", "subscriptions"
   add_foreign_key "collections", "users"
