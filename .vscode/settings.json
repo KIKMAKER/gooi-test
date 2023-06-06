@@ -98,7 +98,7 @@
     "editor.defaultFormatter": "aliariff.vscode-erb-beautify",
     "editor.formatOnSave": true
   },
-  "workbench.colorTheme": "Visual Studio Light",
+  "workbench.colorTheme": "Default Light Modern",
   "explorer.confirmDragAndDrop": false,
   "security.workspace.trust.untrustedFiles": "open",
   "window.zoomLevel": -1
