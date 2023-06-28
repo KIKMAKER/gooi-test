@@ -6,7 +6,7 @@
 
 // General style
 $font-family-sans-serif: $body-font;
-$headings-font-family:   $headers-font;
+$headings-font-family:   $heading-font;
 $body-bg:                $light-gray;
 $font-size-base:         1rem;
 
@@ -24,3 +24,13 @@ $border-radius-lg: 2px;
 $border-radius-sm: 2px;
 
 // Override other variables below!
+$theme-colors: (
+  "primary": $primary
+)
+
+$custom-colors: (
+  "custome-color": $custom-red
+);
+
+$theme-colors: map-merge($theme-colors, $custom-colors)
+// class: 'btn btn-custom-color'
