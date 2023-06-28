@@ -8,7 +8,7 @@ class CreateSubscriptions < ActiveRecord::Migration[7.0]
       t.integer :plan
       t.date :start_date
       t.references :user, null: false, foreign_key: true
-      t.references :order, null: false, foreign_key: true
+      t.references :order, foreign_key: true, optional: true
 
       t.timestamps
     end

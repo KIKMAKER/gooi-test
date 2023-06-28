@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_28_122313) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_28_160428) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -46,7 +46,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_28_122313) do
     t.bigint "product_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
     t.index ["product_id"], name: "index_orders_on_product_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -66,7 +68,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_28_122313) do
     t.integer "plan"
     t.date "start_date"
     t.bigint "user_id", null: false
-    t.bigint "order_id", null: false
+    t.bigint "order_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["order_id"], name: "index_subscriptions_on_order_id"
@@ -101,6 +103,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_28_122313) do
   add_foreign_key "collections", "subscriptions"
   add_foreign_key "invoices", "subscriptions"
   add_foreign_key "orders", "products"
+  add_foreign_key "orders", "users"
   add_foreign_key "subscriptions", "orders"
   add_foreign_key "subscriptions", "users"
 end

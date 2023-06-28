@@ -4,9 +4,9 @@ class CollectionRecord < ApplicationRecord
 
   # Validations
   validates :time, presence: true
-  validates :bucket_quantity, presence: true, numericality: { greater_than_or_equal_to: 0 }
+  validates :quantity, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :bucket_type, presence: true
-  
+
   # Custom Methods
 
   # Returns a formatted timestamp for the collection record

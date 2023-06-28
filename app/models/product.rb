@@ -1,13 +1,13 @@
 class Product < ApplicationRecord
+  # Associations
+  has_many :order_products
+  has_many :orders, through: :order_products
+
   # Validations
   validates :name, presence: true
   validates :quantity, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :price, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :description, presence: true
-
-  # Associations
-  has_many :order_products
-  has_many :orders, through: :order_products
 
   # Custom Methods
 
