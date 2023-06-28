@@ -5,17 +5,16 @@
 # Seed file
 puts "Clearing DB"
 puts "1"
-CollectionRecord.destroy_all
-puts "2"
 Collection.destroy_all
-puts "3"
+puts "2"
 Order.destroy_all
-puts "4"
+puts "3"
 Subscription.destroy_all
-puts "5"
+puts "4"
 User.destroy_all
-puts "6"
+puts "5"
 Product.destroy_all
+
 
 puts "Done clearing DB"
 
@@ -51,29 +50,23 @@ puts "#{Subscription.count} subscriptions created"
 
 puts "Creating collections"
 # Create collections
-collection1 = Collection.create(subscription: subscription1, user: user1, date: Time.now, collection_record_id: 0)
-collection2 = Collection.create(subscription: subscription2, user: user2, date: Time.now, collection_record_id: 0)
+collection1 = Collection.create(subscription: subscription1, date: Time.now, time: Time.now,
+  note: "Collected successfully", bucket_quantity: 2, bucket_type: "small")
+collection2 = Collection.create(subscription: subscription2, date: Time.now, time: Time.now,
+  note: "Collected successfully", bucket_quantity: 1, bucket_type: "large")
 puts ">>"
 puts ">>"
 puts "#{Collection.count} collections created"
 
 puts "Creating orders"
 # Create orders
-order1 = Order.create(quantity: 1, user: user1, collection_id: collection1.id)
-order1.product = product1
+order1 = Order.create(quantity: 1, user: user1, product_id: product1.id)
+order1.product_id = product1.id
 
-order2 = Order.create(quantity: 1, user: user2, collection_id: collection1.id)
-order2.product = product2
+order2 = Order.create(quantity: 1, user: user2, product_id: product2.id)
+order2.product_id = product2.id
 puts ">>"
 puts ">>"
 puts "#{Order.count} orders created"
-
-puts "Creating collection records"
-# Create collection records
-collection_record1 = CollectionRecord.create(date: Date.today, time: Time.now, note: "Collected successfully", quantity: 2, bucket_type: "small", collection: collection1)
-collection_record2 = CollectionRecord.create(date: Date.today, time: Time.now, note: "Collected successfully", quantity: 1, bucket_type: "large", collection: collection2)
-puts ">>"
-puts ">>"
-puts "#{CollectionRecord.count} collection records created"
 
 puts "Seed file complete"

@@ -3,7 +3,6 @@ class Collection < ApplicationRecord
   belongs_to :subscription
   has_many :orders, through: :subscriptions
   has_many :products, through: :orders
-  has_one :collection_record, dependent: :destroy
 
   # Validations
   validates :subscription_id, presence: true
