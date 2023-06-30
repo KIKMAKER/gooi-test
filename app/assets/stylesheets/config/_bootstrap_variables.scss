@@ -23,14 +23,14 @@ $border-radius:    2px;
 $border-radius-lg: 2px;
 $border-radius-sm: 2px;
 
-// Override other variables below!
-$theme-colors: (
-  "primary": $primary
-)
+// // Override other variables below!
+// $theme-colors: (
+//   "primary": $primary
+// )
 
-$custom-colors: (
-  "custome-color": $custom-red
-);
+// $custom-colors: (
+//   "custome-color": $custom-red
+// );
 
-$theme-colors: map-merge($theme-colors, $custom-colors)
-// class: 'btn btn-custom-color'
+// $theme-colors: map-merge($theme-colors, $custom-colors)
+// // class: 'btn btn-custom-color'

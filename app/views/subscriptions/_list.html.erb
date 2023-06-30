@@ -1,0 +1,9 @@
+<h1>All Subscriptions</h1>
+<ul>
+  <% @subscriptions.each do |subscription| %>
+    <%= link_to subscription_path(subscription) do %>
+      <li>name: <%= subscription.user.first_name %> - pick ups: <%= subscription.pick_ups %></li>
+      <%= link_to "log collection", new_subscription_collection_path(subscription) %>
+    <% end %>
+  <% end %>
+</ul>

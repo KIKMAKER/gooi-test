@@ -42,8 +42,8 @@ puts "#{User.count} users created"
 
 puts "Creating subscriptions"
 # Create subscriptions
-subscription1 = Subscription.create(pick_ups: 10, address: "7 Balfour Road, Woodstock", plan: "standard", status: :active, user: user1)
-subscription2 = Subscription.create(pick_ups: 10, address: "33 St Ledger Road, Claremont", plan: "XL", status: :active, user: user2)
+subscription1 = Subscription.create(pick_ups: 10, address: "7 Balfour Road, Woodstock", plan: "standard", status: :active, user: user1, collection_day: 2)
+subscription2 = Subscription.create(pick_ups: 10, address: "33 St Ledger Road, Claremont", plan: "XL", status: :active, user: user2, collection_day: 3)
 puts ">>"
 puts ">>"
 puts "#{Subscription.count} subscriptions created"

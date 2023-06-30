@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="outline">
+    <div>
+      <h1><%= @subscription.user.first_name %>'s Subscription</h1>
+      <div class="outline">
+        <div>
+          <p>Plan: <%= @subscription.plan %></p>
+          <p>Pick ups: <%= @subscription.pick_ups %></p>
+          <p>Collection day: <%= @subscription.collection_day %></p>
+          <p>Address: <%= @subscription.address %></p>
+          <p>Status: <%= @subscription.status %></p>
+        </div>
+      </div>
+      <br>
+      <h1><%= @subscription.user.first_name %>'s Collections</h1>
+      <% @collections.each do |collection| %>
+        <div class="outline">
+          <h2>id:<%= collection.id %></h2>
+          <div class="m-3">
+            <p>Time: <%= collection.time.strftime("%I:%M:%S %p") %></p>
+            <p>Buckets: <%= collection.bucket_quantity %> x <%= collection.bucket_type %></p>
+            <p>Note: <%= collection.note %></p>
+          </div>
+        </div>
+      <% end %>
+      <div class="outline">
+        <%= link_to "All Subscriptions", subscriptions_path %>
+      </div>
+    </div>
+  </div>
+</div>

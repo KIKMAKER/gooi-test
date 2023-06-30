@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="outline">
+    <div>
+      <%= render "subscriptions/list", subscriptions: @subscriptions %>
+    </div>
+  </div>
+  <div class="outline d-flex">
+    <%= link_to "Tuesday Subscriptions", tuesday_subscriptions_path, class: "outline" %>
+    <%= link_to "Wednesday Subscriptions", wednesday_subscriptions_path, class: "outline" %>
+  </div>
+</div>

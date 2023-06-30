@@ -1,0 +1,13 @@
+<div class="outline">
+  <div class="div">
+    <h1>New Record of Collection for <%= @subscription.user.first_name %></h1>
+    <%= simple_form_for [@subscription, @collection] do |f| %>
+      <%= f.input :date, as: :date %>
+      <%= f.input :time, as: :time %>
+      <%= f.input :note, as: :text %>
+      <%= f.input :bucket_quantity, as: :integer %>
+      <%= f.input :bucket_type, as: :select, collection: ["standard", "XL"] %>
+      <%= f.button :submit %>
+    <% end %>
+  </div>
+</div>

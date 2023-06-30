@@ -46,4 +46,9 @@ end
 #  # Returns a string representation of the bucket details
 #  def bucket_details
 #    "Bucket Type: #{bucket_type}\nQuantity: #{bucket_quantity}"
-#  end
+#  endgagc
+
+
+
+## callbacks to change pick_ups
+## moving bucket type to subs
